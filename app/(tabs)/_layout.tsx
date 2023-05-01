@@ -3,6 +3,8 @@ import { Link, Tabs } from 'expo-router';
 import { Pressable, useColorScheme } from 'react-native';
 
 import Colors from '../../constants/Colors';
+import { Routes } from '../../constants/routes';
+import { AntDesign, Entypo, FontAwesome5, MaterialIcons } from '@expo/vector-icons';
 
 /**
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
@@ -23,31 +25,42 @@ export default function TabLayout() {
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
       }}>
       <Tabs.Screen
-        name="index"
+        name={Routes.HOME}
         options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
+          title: 'Home',
+          tabBarIcon: ({ color }) => <Entypo name="home" size={30} color={color} />
         }}
       />
+
       <Tabs.Screen
-        name="two"
+        name={Routes.PORTFOLIO}
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: 'Portfolio',
+          tabBarIcon: ({ color }) => <AntDesign name="piechart" size={30} color={color} />
+        }}
+      />
+
+      <Tabs.Screen
+        name={Routes.MARKET}
+        options={{
+          title: 'Market',
+          tabBarIcon: ({ color }) => <FontAwesome5 name="chart-line" size={30} color={color} />
+        }}
+      />
+
+      <Tabs.Screen
+        name={Routes.RANKINGS}
+        options={{
+          title: 'Rankings',
+          tabBarIcon: ({ color }) => <MaterialIcons name="leaderboard" size={30} color={color} />
+        }}
+      />
+
+      <Tabs.Screen
+        name={Routes.PROFILE}
+        options={{
+          title: 'Profile',
+          tabBarIcon: ({ color }) => <FontAwesome name="user" size={30} color={color} />
         }}
       />
     </Tabs>
